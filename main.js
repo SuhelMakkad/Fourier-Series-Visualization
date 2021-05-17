@@ -43,7 +43,6 @@ const drawCurve = (pointsArr, x, y) => {
       pointsArr[i + 1] + circleCenterY
     );
   });
-  drawLine(x + circleCenterX, y + circleCenterY, 150 + circleCenterX, pointsArr[0] + circleCenterY);
 };
 
 const drawLine = (x1, y1, x2, y2) => {
@@ -54,13 +53,7 @@ const drawLine = (x1, y1, x2, y2) => {
   ctx.stroke();
 };
 
-const drawSmallCircle = (r, offsetX, offsetY) => {
-  const x = (4 / (2 * Math.PI)) * Math.cos(2 * time);
-  const y = (4 / (2 * Math.PI)) * Math.sin(2 * time);
-  drawCircle(x + offsetX, y + offsetY, r);
-};
-
-const drawCircleOncircle = () => {
+const startDrawing = () => {
   let x = 0;
   let y = 0;
   for (let i = 0; i < numberOfCircles; i++) {
@@ -81,7 +74,9 @@ const drawCircleOncircle = () => {
   }
   grpahPoints.unshift(y);
 
-  drawCurve(grpahPoints, x, y);
+  drawCurve(grpahPoints);
+  drawLine(x + circleCenterX, y + circleCenterY, 150 + circleCenterX, grpahPoints[0] + circleCenterY);
+
   if (grpahPoints.length > 5500) grpahPoints.pop();
   time += timeStep;
 };
@@ -90,7 +85,7 @@ canvas.height = 400;
 canvas.width = window.innerWidth;
 let running = false;
 
-drawCircleOncircle();
+startDrawing();
 
 document.querySelector(".start-btn").addEventListener("click", () => {
   running = !running;
@@ -100,7 +95,7 @@ document.querySelector(".start-btn").addEventListener("click", () => {
     : document.querySelector(".start-btn").classList.remove("running");
   if (running) {
     animate(() => {
-      drawCircleOncircle();
+      startDrawing();
     });
   }
 });
