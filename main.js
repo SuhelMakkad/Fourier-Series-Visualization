@@ -108,7 +108,7 @@ document.querySelector("#slider-frequency").addEventListener("change", () => {
   timeStep = document.querySelector("#slider-frequency").value * 0.01;
 });
 
-document.querySelector("#circle-number").addEventListener("change", () => {
+document.querySelector("#circle-number").addEventListener("keyup", () => {
   document.querySelector("#circle-number").value = Math.round(
     +document.querySelector("#circle-number").value
   );
