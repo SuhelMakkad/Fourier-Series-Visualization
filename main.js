@@ -100,11 +100,11 @@ document.querySelector(".start-btn").addEventListener("click", () => {
   }
 });
 
-document.querySelector("#slider-speed").addEventListener("change", () => {
+document.querySelector("#slider-speed").addEventListener("input", () => {
   speed = document.querySelector("#slider-speed").value;
 });
 
-document.querySelector("#slider-frequency").addEventListener("change", () => {
+document.querySelector("#slider-frequency").addEventListener("input", () => {
   timeStep = document.querySelector("#slider-frequency").value * 0.01;
 });
 
@@ -122,6 +122,6 @@ document.querySelector("#show-circle").addEventListener("change", () => {
   showCircle = document.querySelector("#show-circle").checked;
 });
 
-document.querySelector("#slider-radius").addEventListener("change", () => {
+document.querySelector("#slider-radius").addEventListener("input", () => {
   mainRadius = document.querySelector("#slider-radius").value;
 });
